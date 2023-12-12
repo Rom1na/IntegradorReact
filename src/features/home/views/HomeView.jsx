@@ -7,13 +7,14 @@ import { crearPeliculas } from '../../../core/filters/filters';
 import Navbar from '../../../core/components/Navbar';
 import Contenedor from '../../../core/components/Contenedor';
 import { useElContexto } from '../../../core/context/Contexto';
+import { useAuth } from '../../../core/auth/hooks/useAuth';
 
 
 
 const HomeView = () => {
 
-
-    const {setPeliculas,peliculas,favoritos,dat,SetFavoritos}=useElContexto();
+    const {user}=useAuth();
+    const {setPeliculas,peliculas,favoritos,dat,SetFavoritos,loadDataFromLocalStorage,usuario,setUsuario,getUser,registrarUsuario}=useElContexto();
     
  
 
@@ -21,8 +22,19 @@ const HomeView = () => {
   
    fechDataAx(endPointPeliculas.estrenos,crearPeliculas,setPeliculas);
     //  console.log('pelis',peliculas);
-   
-    
+  
+
+   /* 
+    const itemRecuperado = getUser('usuario');
+    setUsuario(itemRecuperado);
+    console.log ('!!',usuario);
+    loadDataFromLocalStorage(usuario);
+  */
+ //  registrarUsuario();
+   loadDataFromLocalStorage(user);
+ 
+  //SetFavoritos(dat);
+  setPeliculas(peliculas);  
       
     }, []);
   

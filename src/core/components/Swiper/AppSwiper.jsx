@@ -28,7 +28,11 @@ export const AppSwiper = ({peliculas,encabezado}) => {
 
     
 
-    <h2>{encabezado}</h2>  
+    <h2
+    style={{
+      fontFamily: "Tahoma",
+    }}
+    >{encabezado}</h2>  
 
     <swiper-container
       ref={swiperElRef}
@@ -55,7 +59,8 @@ export const AppSwiper = ({peliculas,encabezado}) => {
             imagenurl={pelicula.poster}
             titulo={pelicula.titulo}
             fecha ={pelicula.fecha}
-            elegida={pelicula.elegida}  
+            elegida={pelicula.elegida}
+            voto={pelicula.voto}  
         
         />    
         ) 
@@ -79,6 +84,7 @@ export const AppSwiper = ({peliculas,encabezado}) => {
             titulo={pelicula.titulo}
             fecha ={pelicula.fecha}
             elegida={pelicula.elegida}  
+            voto={pelicula.voto}
         
         />    
         ) 
@@ -102,7 +108,7 @@ export const AppSwiper = ({peliculas,encabezado}) => {
             titulo={pelicula.titulo}
             fecha ={pelicula.fecha}
             elegida={pelicula.elegida}  
-        
+            voto={pelicula.voto} 
         />    
         ) 
         }
@@ -129,7 +135,8 @@ export const AppSwiper = ({peliculas,encabezado}) => {
             imagenurl={pelicula.poster}
             titulo={pelicula.titulo}
             fecha ={pelicula.fecha}
-            elegida={pelicula.elegida}  
+            elegida={pelicula.elegida}
+            voto={pelicula.voto}  
         
         />    
         ) 

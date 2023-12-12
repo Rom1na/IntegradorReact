@@ -1,4 +1,5 @@
 import { createContext,useContext,useState } from "react";
+import { useAuth } from "../auth/hooks/useAuth";
 export const ElContexto= createContext();
 
 export const ContextoProveedor =({children})=>{
@@ -9,7 +10,9 @@ export const ContextoProveedor =({children})=>{
   const [favoritos,SetFavoritos]= useState([]);
   const [dat, setDat] = useState([]);
   const [usuario,setUsuario] = useState(null);
-  
+  const [titulo,setTitulo] = useState ('Estrenos');
+  const {user,setUser} = useAuth();
+  const [display,SetDisplay] = useState('');  
 
  
     
@@ -135,9 +138,12 @@ const loadDataFromLocalStorage = (key) => {
       console.log('Datos recuperados del localStorage:', parsedData);
 
       // Actualiza el estado con los datos recuperados
-      setDat(parsedData);
+      SetFavoritos(parsedData);
+     // return parsedData;
+      
     } else {
       console.log('No hay datos en el localStorage.');
+      SetFavoritos([]);
       
     }
   } catch (error) {
@@ -166,6 +172,15 @@ const getUser = (key)=>{
 };
 
 
+   const registrarUsuario = ()=>{
+
+     const u = getUser ('usuario');
+     setUser(u); 
+
+   }
+
+
+
 
 
 
@@ -186,6 +201,8 @@ const getUser = (key)=>{
            favoritos,
            dat,
            usuario,
+           titulo,
+           display,
            crearSeries,
            crearPeliculas,
            setError,
@@ -198,7 +215,11 @@ const getUser = (key)=>{
            ElminarFavorito,
            setDat,
            getUser,
-           setUsuario
+           setUsuario,
+           setTitulo,
+           registrarUsuario,
+           SetDisplay,
+           
            
         }}
       >
@@ -212,7 +233,7 @@ const getUser = (key)=>{
 
 
 export const useElContexto =() =>{
-     const{peliculas,crearPeliculas,setError,setIsLoading,setPeliculas,series,setSeries,crearSeries,busq,setBusq,favoritos,SetFavoritos,AgregarFavorito,ElminarFavorito,loadDataFromLocalStorage,dat,setDat,getUser,usuario,setUsuario} = useContext(ElContexto);
+     const{peliculas,crearPeliculas,setError,setIsLoading,setPeliculas,series,setSeries,crearSeries,busq,setBusq,favoritos,SetFavoritos,AgregarFavorito,ElminarFavorito,loadDataFromLocalStorage,dat,setDat,getUser,usuario,setUsuario,titulo,setTitulo,registrarUsuario,SetDisplay,display} = useContext(ElContexto);
 
    return{
      peliculas,
@@ -232,7 +253,12 @@ export const useElContexto =() =>{
      setDat,
      getUser,
      setUsuario,
-     usuario
+     usuario,
+     titulo,
+     setTitulo,
+     registrarUsuario,
+     SetDisplay,
+     display
     }
 
    };  

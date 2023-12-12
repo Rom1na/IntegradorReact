@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
+import { useElContexto } from '../context/Contexto';
 
 const Banner = ({peliculas}) => {
 
     const [numeroAleatorio, setNumeroAleatorio] = useState(null);
+    const {SetDisplay,display}=useElContexto();
 
     useEffect(() => {
         // Generar un número aleatorio entre 0 y 19
@@ -33,14 +35,18 @@ const Banner = ({peliculas}) => {
         justifyContent: "center",
         
         
+        
+        
      }}>
 
     <div
       style={{
-        height:"439px",
-        width:"780px",
+        height:"600px",
+        width:"100%",
         backgroundImage: `url(${pelicula.backdrop})`, 
-        border: "1px solid white",
+        backgroundPosition:"center top",
+        backgroundSize:"100% auto",
+       
         
       }}
 
@@ -49,25 +55,25 @@ const Banner = ({peliculas}) => {
         style={{
             display:"flex",
             flexDirection:"column",
-            justifyContent: "center",
+            alignSelf: "flex-end"
             
-            
-            
-            
+                   
 
         }}>
-        <h3
+        <h2
             style={{
                 color: "white",
                 textShadow:" -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
+                 
                 
             }}
-            >{pelicula.titulo}</h3>   
+            >{pelicula.titulo}</h2>   
             <p
             style={{
                 color: "white",
-                textShadow:" -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
-                
+                fontSize:"14px",
+                textShadow:" -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+                padding:'25px',
             }}
 
             
@@ -75,23 +81,28 @@ const Banner = ({peliculas}) => {
             
 
         </div>
+        
+        <div
+           style={{
+                display :"flex",
+                gap :"10px",
+                justifyContent:"flex-end",
+                padding :"65px"
+          }}
+
+        >
+
+       
+
         <button
-            style={{backgroundColor:"transparent"}}
-           
-                    /*Desarrollo: Crear un componente detalle de pelicula que incluya creditos y trailers / teasers
-                    (1) Como children de HomeView
-                    o
-                    (2) Por props
-
-                    Referencia: ve comentarios en ---> appRouter.jsx
-                    */
-            
-            
-            >
-                Más Información
-            </button>
+             style={{backgroundColor:"transparent",
+             Shadow:" -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",          
+            }}
+        onClick={ ()=>SetDisplay(pelicula.id)}
+        
+        >Más información ▶</button>    
     
-
+      </div>
 
     </div>
     </div>

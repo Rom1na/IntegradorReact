@@ -1,11 +1,13 @@
 import React from 'react'
 import './Pelicula.css'
 import { useElContexto } from '../context/Contexto'
+import { useAuth } from '../auth/hooks/useAuth';
 
 const Pelicula = ({imagenurl,titulo,id,fecha,voto,elegida}) => {
 
 
-const{AgregarFavorito,ElminarFavorito,usuario}=useElContexto();
+const{AgregarFavorito,ElminarFavorito,usuario,SetDisplay,display}=useElContexto();
+const{user}=useAuth();
 
 
 
@@ -25,28 +27,22 @@ const{AgregarFavorito,ElminarFavorito,usuario}=useElContexto();
            <h5>Puntaje: {voto}</h5>
            <div>
            <button
-             onClick={ ()=>
-              {alert(`En Proceso de desarrollo -> id de pelicula: ${id}`);}
-              /*Desarrollo: Crear un componente detalle de pelicula que incluya creditos y trailers / teasers
-              (1) Como children de HomeView
-              o
-              (2) Por props
-
-              Referencia: ve comentarios en ---> appRouter.jsx
-              */
+             onClick={ ()=>SetDisplay(id)
+              
             
             }
            >Más</button>
-           
+            
+           <span> </span> 
            
            <button 
            
            onClick={
             !elegida?  
             ()=>         
-            {AgregarFavorito(imagenurl,titulo,id,fecha,voto,usuario);}:
+            {AgregarFavorito(imagenurl,titulo,id,fecha,voto,user);}:
             ()=>
-             {ElminarFavorito(id,usuario);}
+             {ElminarFavorito(id,user);}
             //{alert(`En Proceso de desarrollo -> id de pelicula: ${id}`);}
             /*Desarrollo : Para poder hacer el filter al state creando un nuevo hook, es necesario primero revisar la función del retrieve del Json del localStorage X Usuario.
              

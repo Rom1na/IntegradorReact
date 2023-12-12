@@ -1,12 +1,13 @@
 import React, { useState,useEffect } from 'react'
 import './LoginView.css'
 import { useAuth } from '../../../core/auth/hooks/useAuth';
-import { useElContexto } from '../../../core/context/Contexto';
+import { ElContexto, useElContexto } from '../../../core/context/Contexto';
 
 
 const LoginView = () => {
      
     const {login} =useAuth();
+    const {setTitulo}= useElContexto();
     
     const [form,setForm] = useState({
       user:"",
@@ -22,10 +23,12 @@ const LoginView = () => {
       ...form,
       [name]: value,
      }); 
-
+     setTitulo('Estrenos');
+     
 
     }; 
 
+   
     
     
 

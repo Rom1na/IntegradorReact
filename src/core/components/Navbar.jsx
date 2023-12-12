@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../auth/hooks/useAuth';
 import { useElContexto } from '../context/Contexto';
-import { fechDataAx } from '../services/fechDataAx';
+import { fechDataAx,fechDataAxId } from '../services/fechDataAx';
 import { crearPeliculas } from '../filters/filters';
-
+import { endPointPeliculas } from '../services/url';
 
 
 
 const Navbar = () => {
     
-    const {islogged,logout}= useAuth();
-    const {setError,setIsLoading,peliculasbusq,getUser,usuario,setUsuario,setPeliculas,peliculas}=useElContexto();
+    const {islogged,logout,user}= useAuth();
+    const {setError,setIsLoading,peliculasbusq,getUser,usuario,setUsuario,setPeliculas,peliculas,setTitulo}=useElContexto();
     const [busq,setBusq] = useState (null);
   
 
@@ -25,11 +25,10 @@ const Navbar = () => {
     };
 
     const handleSearch = (busq) =>{
-      const endPointPeliculasBusq =`search/movie?query=${busq}`;
-      fechDataAx(endPointPeliculasBusq,crearPeliculas,setPeliculas);
       
+      fechDataAxId(endPointPeliculas.peliculaId,crearPeliculas,setPeliculas,busq);
       console.log('nav',busq); 
-    
+      setTitulo(`Resultado de la búsqueda de ${busq}`);
 
     };
  
@@ -37,8 +36,10 @@ const Navbar = () => {
 
 
    useEffect(() =>{
-      const itemRecuperado = getUser('usuario');
-      setUsuario(itemRecuperado);
+     // const itemRecuperado = getUser('usuario');
+     // setUsuario(itemRecuperado);
+     console.log('?!?',user)
+     
 
    },[]);
    
@@ -51,11 +52,19 @@ const Navbar = () => {
     <div
       style={{
         display: 'flex',
-        justifyContent: "space-between"
-        
-              }}>
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width:'100%',
+        margin:'auto'
+         }}>
       <div>
-      <img src='src\assets\estoesunlogo.png'></img>
+         <h2 style={{
+           color: '#e50914',
+           fontFamily:'Tahoma',
+           fontSize: '35px',
+
+         }}
+         >MasCine!</h2>
       </div>
     <div>
     <div
@@ -64,8 +73,8 @@ const Navbar = () => {
       gap :"10px"}}>
       <input
          style={{
-          fontSize:'12px',
-          fontFamily:'Verdana',
+          fontSize:'14px',
+          fontFamily:'Tahoma',
           
          }} 
          name ='busqueda'
@@ -73,14 +82,25 @@ const Navbar = () => {
          placeholder='su búsqueda'
          onChange={handleChang}
       /> 
-       <button onClick={()=>{handleSearch(busq);}}>Buscar</button>            
+       <button
+          
+       
+       onClick={()=>{handleSearch(busq);}}>Buscar</button>            
       </div>  
 
     </div>
     
       <div> 
-      <p>
-        Hola {usuario}!🖐🏻</p>
+      <p
+      style={{
+        fontSize:'14px',
+        border: '1px solid white',
+        padding: '0.3em 1.2em',
+        borderRadius:'1px',
+        borderColor:'#fff',  
+      }}>
+        {console.log('??',user)}
+        Hola {user}!🖐🏻</p>
       </div> 
 
       <div>

@@ -2,6 +2,10 @@ export const endPointPeliculas = {
     topRated: "/movie/top_rated",
     populares: "/movie/popular",
     estrenos:  "/movie/upcoming",
+    peliculaId: "/search/movie?query=",
+    datos:"/movie/",
+  
+    
 
   };
 
@@ -13,8 +17,6 @@ export const endPointPeliculas = {
   };
 
 
-
-  
 
 /*
     endPointPeliculas = "/movie/top_rated";

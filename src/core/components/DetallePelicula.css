@@ -1,0 +1,58 @@
+.container{
+   font-family: 'Open Sans', sans-serif;
+   display: grid;
+   grid-template-columns: 1fr 1fr; 
+   grid-template-rows: 1fr 1fr;
+   height: 600px;
+   width: 100%;
+
+   
+}
+.uno{
+   grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center;
+  background-color: #242424;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+}
+.dos{
+  display: flex;
+  direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #242424
+}
+
+
+.tres,
+.cuatro{
+  display: flex;
+  flex-direction: row;
+  background-color:  #242424;
+  overflow-x: auto;
+  overflow-y: hidden;
+  
+  
+  
+
+}
+
+.tagline{
+  font-size: 12px;
+  font-family: inherit;
+  
+  
+}
+.overview{
+  font-size: 14px;
+  
+}
+.titulo{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+}
