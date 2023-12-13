@@ -70,15 +70,29 @@ const DetallePelicula = ({id}) => {
         </div>  
         <div className='dos'>
          
-         <iframe
+        {trailer? (
+              
+              <iframe
                     
-            src={trailer.link}
-            title='Trailer'
-            width='550px'
-            height='90%'
-            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'>
+              src={trailer.link}
+              title='Trailer'
+              width='550px'
+              height='90%'
+              allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'>
+              
+            </iframe>
+
+             
+
+          ) : (
+             <p>🚫Trailer No disponible</p>
             
-          </iframe>
+          )}
+         
+         
+         
+         
+        
 
         </div>
         <div className='tres'>

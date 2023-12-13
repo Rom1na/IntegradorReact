@@ -60,11 +60,11 @@ const Navbar = () => {
       <div>
          <h2 style={{
            color: '#e50914',
-           fontFamily:'Tahoma',
+           fontFamily:'Bebas Neue, sans-serif',
            fontSize: '35px',
 
          }}
-         >MasCine!</h2>
+         >ReactFilms</h2>
       </div>
     <div>
     <div
@@ -79,7 +79,7 @@ const Navbar = () => {
          }} 
          name ='busqueda'
          type ='text'
-         placeholder='su búsqueda'
+         placeholder='su búsqueda 🔍'
          onChange={handleChang}
       /> 
        <button
