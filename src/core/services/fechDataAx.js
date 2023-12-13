@@ -35,6 +35,7 @@ export const fechDataAxDatos = async(ep,filter,setData,id,dato) =>{
 
 
 export const fechDataAxCast = async(ep,filter,setData,id) =>{
+     
      const urlcompuesta = ep+id+'/credits';
      const {data} = await cBase.get(urlcompuesta);
      const resultados = filter(data.cast);
